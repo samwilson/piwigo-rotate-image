@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Rotate Image
-Version: 0.1
+Version: 0.2
 Description: enables to rotate images in batch processing
-Plugin URI: http://www.phpwebgallery.net
+Plugin URI: http://fr.piwigo.org/ext/extension_view.php?eid=578
 */
 if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 
