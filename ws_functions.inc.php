@@ -8,6 +8,8 @@ $service->addMethod('pwg.image.rotate', 'ws_image_rotate',
   array(
   'image_id'=>array(),
   'angle'=>array('default'=>"90"),
+  'pwg_token' => array(),
+  'rotate_hd' => array('default'=>0)
   ),
   'Rotates a given image'
 );
@@ -24,10 +26,16 @@ function ws_image_rotate($params, &$service)
     return new PwgError(403, "image_id or image_path is missing");
   }
 
+  if (empty($params['pwg_token']) or get_pwg_token() != $params['pwg_token'])
+  {
+    return new PwgError(403, 'Invalid security token');
+  }
+
   include_once(PHPWG_ROOT_PATH.'admin/include/functions_upload.inc.php');
   include_once(PHPWG_ROOT_PATH.'admin/include/image.class.php');
   $image_id=(int)$params['image_id'];
   $angle=(int)$params['angle'];
+  $rotate_hd = (int) $params['rotate_hd'];
   $query='
 SELECT id, path, tn_ext, has_high
   FROM '.IMAGES_TABLE.'
@@ -48,8 +56,13 @@ SELECT id, path, tn_ext, has_high
   $img->rotate($angle);
   $img->write($image_path);
   update_metadata(array($image_id=>$image_path));
+  if ($rotate_hd) {
+    $sizes = array('thumb','high');
+  } else {
+    $sizes = array('thumb');
+  }
   
-  foreach (array('thumb','high') as $size) {
+  foreach ($sizes as $size) {
     $resized_path = file_path_for_type($image_path,$size);
     if (file_exists($resized_path)) {
       $resized = new pwg_image($resized_path);
@@ -58,7 +71,6 @@ SELECT id, path, tn_ext, has_high
     }
   }
   return true;
-  
 }
 
 ?>

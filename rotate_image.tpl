@@ -1,6 +1,6 @@
-﻿{footer_script}
+{footer_script}
 var rotateImagesMessage = "{'Images rotation in progress...'|@translate}";
-
+var ri_pwg_token = '{$RI_PWG_TOKEN}';
 {literal}
   jQuery('#applyAction').click(function(e) {
     if (elements.length != 0)
@@ -9,7 +9,7 @@ var rotateImagesMessage = "{'Images rotation in progress...'|@translate}";
     }
     else if (jQuery('[name="selectAction"]').val() == 'rotateImg')
     {
-      angle = jQuery('input[name="rotate_angle"]:checked').val();
+      angle = jQuery('select[name="rotate_angle"]').val();
       e.stopPropagation();
     }
     else
@@ -54,6 +54,7 @@ var rotateImagesMessage = "{'Images rotation in progress...'|@translate}";
           method: "pwg.image.rotate",
           format: 'json',
           angle: angle,
+          pwg_token: ri_pwg_token,
           image_id: elements[i]
         },
         dataType: 'json',
@@ -67,8 +68,20 @@ var rotateImagesMessage = "{'Images rotation in progress...'|@translate}";
 {/literal}{/footer_script}
 
 <div id="rotate_image" class="bulkAction">
-  <p>{'Select angle :'|@translate}</p>
-  <label><input type="radio" name="rotate_angle" value="90" checked="checked"> {'Rotate 90° left'|@translate}</label>
-  <label><input type="radio" name="rotate_angle" value="270"> {'Rotate 90° right'|@translate}</label>
-  <label><input type="radio" name="rotate_angle" value="180"> {'Rotate 180°'|@translate}</label>
+      <table style="margin-left:20px;">
+        <tr>
+          <th id="thumb_width_th">{'Angle'|@translate}</th>
+          <td>
+          <select name="rotate_angle">
+            {foreach from=$angles item=angle}
+              <option value="{$angle.value}" {if $saved_angle eq $angle.value}selected="selected"{/if}>{$angle.name}</option>
+            {/foreach}
+          </select>
+          </td>
+        </tr>
+        <tr>
+          <th><label for="rotate_hd">{'Also rotate HD image'|@translate}</label></th>
+          <td><input type="checkbox" name="rotate_hd" id="rotate_hd" {if $upload_form_settings.thumb_crop}checked="checked"{/if}></td>
+        </tr>
+      </table>
 </div>
