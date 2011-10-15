@@ -1,0 +1,1 @@
+enables to rotate images in batch processing
