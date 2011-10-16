@@ -1,0 +1,1 @@
+Rotación de imágenes en masa.
