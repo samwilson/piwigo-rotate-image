@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Rotate Image
-Version: 0.3
+Version: 0.4
 Description: enables to rotate images in batch processing
 Plugin URI: http://fr.piwigo.org/ext/extension_view.php?eid=578
 */
@@ -28,7 +28,8 @@ function rotate_image_set_template_data() {
   $template->assign(array(
     'RI_PWG_TOKEN' => get_pwg_token(),
     'angles' => $angles,
-    'angle_value' => 90
+    'angle_value' => 90,
+    'library' => pwg_image::get_library()
   ));
   $template->set_filename('rotate_image', realpath(dirname(__FILE__).'/rotate_image.tpl'));
   $template->append('element_set_global_plugins_actions', array(
