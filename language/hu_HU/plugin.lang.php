@@ -1,8 +1,10 @@
 <?php
 $lang['Images rotation in progress...'] = 'Képek forgatása folyamatban...';
 $lang['Rotate images'] = 'Képek forgatása';
-$lang['Rotate 90° right'] = 'Forgatás 90° jobb';
-$lang['Rotate 90° left'] = 'Forgatás 90° bal';
-$lang['Rotate 180°'] = 'Forgatás 180°';
 
+$lang['180°'] = '180°-al';
+$lang['90° left'] = '90°-al balra';
+$lang['90° right'] = '90°-al jobbra';
+$lang['Also rotate HD image'] = 'Forgassa a HD képeket is';
+$lang['Angle'] = 'Forgatás:';
 ?>
