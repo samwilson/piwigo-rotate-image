@@ -1,1 +1,1 @@
-hiermee kunt u foto's laten draaien (roteren) op de achtergrond (batch-verwerking)
+Hiermee kunt u afbeeldingen draaien (roteren) op de achtergrond (batch-verwerking)
