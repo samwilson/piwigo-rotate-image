@@ -10,6 +10,7 @@ var ri_pwg_token = '{$RI_PWG_TOKEN}';
     else if (jQuery('[name="selectAction"]').val() == 'rotateImg')
     {
       angle = jQuery('select[name="rotate_angle"]').val();
+      rotate_hd = jQuery("#rotate_hd").is(':checked');
       e.stopPropagation();
     }
     else
@@ -54,6 +55,7 @@ var ri_pwg_token = '{$RI_PWG_TOKEN}';
           method: "pwg.image.rotate",
           format: 'json',
           angle: angle,
+          rotate_hd: rotate_hd,
           pwg_token: ri_pwg_token,
           image_id: elements[i]
         },
@@ -82,7 +84,7 @@ var ri_pwg_token = '{$RI_PWG_TOKEN}';
     {if $library != 'gd'}
     <tr>
       <th><label for="rotate_hd">{'Also rotate HD image'|@translate}</label></th>
-      <td><input type="checkbox" name="rotate_hd" id="rotate_hd" {if $upload_form_settings.thumb_crop}checked="checked"{/if}></td>
+      <td><input type="checkbox" name="rotate_hd" id="rotate_hd" checked="checked"></td>
     </tr>
     {/if}
   </table>
