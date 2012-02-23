@@ -1,7 +1,29 @@
 {footer_script}
 var rotateImagesMessage = "{'Images rotation in progress...'|@translate}";
+var autoRotateOptionText = "{'auto (EXIF orientation tag)'|@translate}";
 var ri_pwg_token = '{$RI_PWG_TOKEN}';
 {literal}
+jQuery(document).ready(function() {
+  function autoRotateOption() {
+    if (jQuery("#rotate_hd").is(':checked')) {
+      jQuery("<option/>")
+        .attr("id", "autoRotateOption")
+        .attr("value", "auto")
+        .attr("selected", "selected")
+        .text(autoRotateOptionText)
+        .appendTo('select[name="rotate_angle"]')
+      ;
+    }
+    else {
+      jQuery("#autoRotateOption").remove();
+    }
+  }
+
+  autoRotateOption();
+  jQuery('#rotate_hd').click(function() {
+    autoRotateOption();
+  });
+
   jQuery('#applyAction').click(function(e) {
     if (elements.length != 0)
     {
@@ -66,26 +88,23 @@ var ri_pwg_token = '{$RI_PWG_TOKEN}';
     }
     return false;
   });
-
+});
 {/literal}{/footer_script}
 
 <div id="rotate_image" class="bulkAction">
-  <table style="margin-left:20px;">
-    <tr>
-      <th id="thumb_width_th">{'Angle'|@translate}</th>
-      <td>
-      <select name="rotate_angle">
-        {foreach from=$angles item=angle}
-          <option value="{$angle.value}" {if $saved_angle eq $angle.value}selected="selected"{/if}>{$angle.name}</option>
-        {/foreach}
-      </select>
-      </td>
-    </tr>
-    {if $library != 'gd'}
-    <tr>
-      <th><label for="rotate_hd">{'Also rotate HD image'|@translate}</label></th>
-      <td><input type="checkbox" name="rotate_hd" id="rotate_hd" checked="checked"></td>
-    </tr>
-    {/if}
-  </table>
+{if $library != 'gd'}
+  <p><label>
+    <input type="checkbox" name="rotate_hd" id="rotate_hd" checked="checked">
+    <strong>{'Also rotate HD image'|@translate}</strong>
+  </label></p>
+{/if}
+  <p><label>
+    <strong>{'Angle'|@translate}</strong>
+    <br>
+    <select name="rotate_angle">
+{foreach from=$angles item=angle}
+      <option value="{$angle.value}" {if $saved_angle eq $angle.value}selected="selected"{/if}>{$angle.name}</option>
+{/foreach}
+    </select>
+  </label></p>
 </div>

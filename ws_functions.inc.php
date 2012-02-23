@@ -36,8 +36,7 @@ function ws_image_rotate($params, &$service)
   include_once(PHPWG_ROOT_PATH.'admin/include/functions_upload.inc.php');
   include_once(PHPWG_ROOT_PATH.'admin/include/image.class.php');
   $image_id=(int)$params['image_id'];
-  $angle=(int)$params['angle'];
-  $rotate_hd = get_boolean($params['rotate_hd']);
+  
   $query='
 SELECT id, path, tn_ext, has_high
   FROM '.IMAGES_TABLE.'
@@ -49,10 +48,22 @@ SELECT id, path, tn_ext, has_high
     return new PwgError(403, "image_id not found");
   }
 
-  if ($rotate_hd and get_boolean($image['has_high'])) {
+  // rotation angle
+  if ('auto' == $params['angle']) {
+    $angle = $params['angle'];
+  }
+  else {
+    $angle = (int)$params['angle'];
+  }
+
+  if (get_boolean($params['rotate_hd']) and get_boolean($image['has_high'])) {
     $to_rotate_path = file_path_for_type($image['path'], 'high');
     $quality = $conf['upload_form_hd_quality'];
     $regenerate_websize = true;
+
+    if ('auto' == $angle) {
+      $angle = pwg_image::get_rotation_angle($to_rotate_path);
+    }
   }
   else {
     $to_rotate_path = $image['path'];
