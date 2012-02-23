@@ -35,7 +35,7 @@ function ws_image_rotate($params, &$service)
   include_once(PHPWG_ROOT_PATH.'admin/include/image.class.php');
   $image_id=(int)$params['image_id'];
   $angle=(int)$params['angle'];
-  $rotate_hd = (int) $params['rotate_hd'];
+  $rotate_hd = get_boolean($params['rotate_hd']);
   $query='
 SELECT id, path, tn_ext, has_high
   FROM '.IMAGES_TABLE.'
