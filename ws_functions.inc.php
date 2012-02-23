@@ -49,37 +49,53 @@ SELECT id, path, tn_ext, has_high
     return new PwgError(403, "image_id not found");
   }
 
-  $image_path = $image['path'];
-
-    
-  $thumb_path = get_thumbnail_path($image);
-
-  $img = new pwg_image($image_path);
-  $img->set_compression_quality($conf['upload_form_websize_quality']);
-  $img->rotate($angle);
-  $img->write($image_path);
-  update_metadata(array($image_id=>$image_path));
-  if ($rotate_hd) {
-    $sizes = array('thumb','high');
-  } else {
-    $sizes = array('thumb');
-  }
-  
-  foreach ($sizes as $size) {
-    $resized_path = file_path_for_type($image_path,$size);
-    
+  if ($rotate_hd and get_boolean($image['has_high'])) {
+    $to_rotate_path = file_path_for_type($image['path'], 'high');
     $quality = $conf['upload_form_hd_quality'];
-    if ('thumb' == $size) {
-      $quality = $conf['upload_form_thumb_quality'];
-    }
-    
-    if (file_exists($resized_path)) {
-      $resized = new pwg_image($resized_path);
-      $resized->set_compression_quality($quality);
-      $resized->rotate($angle);
-      $resized->write($resized_path);
-    }
+    $regenerate_websize = true;
   }
+  else {
+    $to_rotate_path = $image['path'];
+    $quality = $conf['upload_form_websize_quality'];
+    $regenerate_websize = false;
+  }
+
+  $rotated = new pwg_image($to_rotate_path);
+  $rotated->set_compression_quality($quality);
+  $rotated->rotate($angle);
+  $rotated->write($to_rotate_path);
+
+  if ($regenerate_websize) {
+    ws_images_resizewebsize(
+      array(
+        'image_id' => $params['image_id'],
+        'maxwidth' => $conf['upload_form_websize_maxwidth'],
+        'maxheight' => $conf['upload_form_websize_maxheight'],
+        'quality' => $conf['upload_form_websize_quality'],
+        'automatic_rotation' => $conf['upload_form_automatic_rotation'],
+        'library' => $conf['graphics_library'],
+        ),
+      &$service
+      );
+  }
+
+  ws_images_resizethumbnail(
+    array(
+      'image_id' => $params['image_id'],
+      'maxwidth' => $conf['upload_form_thumb_maxwidth'],
+      'maxheight' => $conf['upload_form_thumb_maxheight'],
+      'quality' => $conf['upload_form_thumb_quality'],
+      'crop' => $conf['upload_form_thumb_crop'],
+      'follow_orientation' => $conf['upload_form_thumb_follow_orientation'],
+      'library' => $conf['graphics_library'],
+      ),
+    &$service
+    );
+
+  $conf['use_exif'] = false;
+  $conf['use_iptc'] = false;
+  update_metadata(array($image['id'] => $image['path']));
+  
   return true;
 }
 
