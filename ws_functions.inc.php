@@ -16,6 +16,8 @@ $service->addMethod('pwg.image.rotate', 'ws_image_rotate',
 
 function ws_image_rotate($params, &$service)
 {
+  global $conf;
+  
   if (!is_admin())
   {
     return new PwgError(401, 'Access denied');
@@ -53,6 +55,7 @@ SELECT id, path, tn_ext, has_high
   $thumb_path = get_thumbnail_path($image);
 
   $img = new pwg_image($image_path);
+  $img->set_compression_quality($conf['upload_form_websize_quality']);
   $img->rotate($angle);
   $img->write($image_path);
   update_metadata(array($image_id=>$image_path));
@@ -64,8 +67,15 @@ SELECT id, path, tn_ext, has_high
   
   foreach ($sizes as $size) {
     $resized_path = file_path_for_type($image_path,$size);
+    
+    $quality = $conf['upload_form_hd_quality'];
+    if ('thumb' == $size) {
+      $quality = $conf['upload_form_thumb_quality'];
+    }
+    
     if (file_exists($resized_path)) {
       $resized = new pwg_image($resized_path);
+      $resized->set_compression_quality($quality);
       $resized->rotate($angle);
       $resized->write($resized_path);
     }
