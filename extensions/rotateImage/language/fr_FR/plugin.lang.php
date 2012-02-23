@@ -6,4 +6,5 @@ $lang['Also rotate HD image'] = 'Pivoter aussi l\'image HD';
 $lang['90° right'] = '90° à droite';
 $lang['90° left'] = '90° à gauche';
 $lang['180°'] = '180°';
+$lang['auto (EXIF orientation tag)'] = 'automatique (selon le tag d\'orientation EXIF)';
 ?>
