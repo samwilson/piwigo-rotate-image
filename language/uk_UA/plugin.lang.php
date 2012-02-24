@@ -27,4 +27,5 @@ $lang['Also rotate HD image'] = 'Крім того, поворот HD зобра
 $lang['Angle'] = 'Кут';
 $lang['Images rotation in progress...'] = 'Обертання зображення в виконується...';
 $lang['Rotate images'] = 'Обертання зображення';
+$lang['auto (EXIF orientation tag)'] = 'авто (EXIF орієнтації теґа)';
 ?>
