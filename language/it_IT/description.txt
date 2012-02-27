@@ -1,0 +1,1 @@
+Permette di ruotare le immagini con un processo batch
