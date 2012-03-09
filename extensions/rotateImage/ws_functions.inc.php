@@ -86,7 +86,7 @@ SELECT id, path, tn_ext, has_high
         'automatic_rotation' => $conf['upload_form_automatic_rotation'],
         'library' => $conf['graphics_library'],
         ),
-      &$service
+      $service
       );
   }
 
@@ -100,7 +100,7 @@ SELECT id, path, tn_ext, has_high
       'follow_orientation' => $conf['upload_form_thumb_follow_orientation'],
       'library' => $conf['graphics_library'],
       ),
-    &$service
+    $service
     );
 
   $conf['use_exif'] = false;

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Rotate Image
-Version: 0.5
+Version: 0.6
 Description: enables to rotate images in batch processing
 Plugin URI: http://fr.piwigo.org/ext/extension_view.php?eid=578
 */
