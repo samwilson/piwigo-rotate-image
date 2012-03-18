@@ -7,4 +7,5 @@ $lang['90° left'] = '90°-al balra';
 $lang['90° right'] = '90°-al jobbra';
 $lang['Also rotate HD image'] = 'Forgassa a HD képeket is';
 $lang['Angle'] = 'Forgatás:';
+$lang['auto (EXIF orientation tag)'] = 'auto (EXIF szerint)';
 ?>
