@@ -1,0 +1,1 @@
+Permite rodar imagens com processamento em lote
