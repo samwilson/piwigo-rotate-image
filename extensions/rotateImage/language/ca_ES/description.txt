@@ -1,0 +1,1 @@
+Aquest complement permet rotar una selecció d'imatges des de la secció 'Gestionar lots' al taulell de control.
