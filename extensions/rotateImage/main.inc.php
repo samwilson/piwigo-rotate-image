@@ -67,4 +67,18 @@ function rotate_image_force_refresh($root_url, $params, $src_image, $rel_url)
 
   return $root_url;
 }
+
+add_event_handler('tabsheet_before_select','rotate_image_add_tab', 50, 2);
+function rotate_image_add_tab($sheets, $id)
+{  
+  if ($id == 'photo')
+  {
+    $sheets['rotate'] = array(
+      'caption' => l10n('Rotate'),
+      'url' => get_root_url().'admin.php?page=plugin-rotateImage-'.$_GET['image_id'],
+      );
+  }
+  
+  return $sheets;
+}
 ?>
