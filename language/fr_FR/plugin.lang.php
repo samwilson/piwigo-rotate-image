@@ -1,4 +1,5 @@
 <?php
+$lang['Rotate'] = 'Pivoter';
 $lang['Images rotation in progress...'] = 'Rotation des images en cours...';
 $lang['Rotate images'] = 'Pivoter les images';
 $lang['Angle'] = 'Angle';
