@@ -25,11 +25,10 @@ jQuery(document).ready(function() {
   });
 
   jQuery('#applyAction').click(function(e) {
-    if (elements.length != 0)
-    {
+    if (typeof(elements) != "undefined") {
       return true;
     }
-    else if (jQuery('[name="selectAction"]').val() == 'rotateImg')
+    if (jQuery('[name="selectAction"]').val() == 'rotateImg')
     {
       angle = jQuery('select[name="rotate_angle"]').val();
       rotate_hd = jQuery("#rotate_hd").is(':checked');
@@ -39,6 +38,7 @@ jQuery(document).ready(function() {
     {
       return true;
     }
+
     jQuery('.bulkAction').hide();
     jQuery('#regenerationText').html(rotateImagesMessage);
     var maxRequests=1;
@@ -48,6 +48,8 @@ jQuery(document).ready(function() {
       cacheResponse: false,
       maxRequests: maxRequests
     });
+
+    elements = Array();
     if (jQuery('input[name="setSelected"]').attr('checked'))
       elements = all_elements;
     else
@@ -82,12 +84,28 @@ jQuery(document).ready(function() {
           image_id: elements[i]
         },
         dataType: 'json',
-        success: ( function(data) { progress(++todo, progressBar_max, data['result']) }),
-        error: ( function(data) { progress(++todo, progressBar_max, false) })
+        success: ( function(data) { progressRotate(++todo, progressBar_max, data['result']) }),
+        error: ( function(data) { progressRotate(++todo, progressBar_max, false) })
       });
     }
     return false;
   });
+
+  function progressRotate(val, max, success) {
+    jQuery('#progressBar').progressBar(val, {
+      max: max,
+      textFormat: 'fraction',
+      boxImage: 'themes/default/images/progressbar.gif',
+      barImage: 'themes/default/images/progressbg_orange.gif'
+    });
+    type = success ? 'regenerateSuccess': 'regenerateError'
+    s = jQuery('[name="'+type+'"]').val();
+    jQuery('[name="'+type+'"]').val(++s);
+
+    if (val == max)
+      jQuery('#applyAction').click();
+  }
+
 });
 {/literal}{/footer_script}
 
