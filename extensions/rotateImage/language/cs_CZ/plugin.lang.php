@@ -7,4 +7,5 @@ $lang['90° right'] = '90° doprava';
 $lang['90° left'] = '90° doleva'; 
 $lang['180°'] = 'O 180°'; 
 $lang['auto (EXIF orientation tag)'] = 'automaticky (podle EXIF informace /orientation tag/)';
+$lang['Rotate'] = 'Otoč';
 ?>
