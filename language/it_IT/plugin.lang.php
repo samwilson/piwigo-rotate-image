@@ -28,4 +28,5 @@ $lang['Angle'] = 'Angolo di rotazione';
 $lang['auto (EXIF orientation tag)'] = 'Automatico (in base agli EXIF)';
 $lang['Images rotation in progress...'] = 'Rotazione immagini in corso..';
 $lang['Rotate images'] = 'Ruota immagini';
+$lang['Rotate'] = 'Ruotare';
 ?>
