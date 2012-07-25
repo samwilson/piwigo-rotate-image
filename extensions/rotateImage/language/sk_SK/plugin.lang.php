@@ -8,4 +8,5 @@ $lang['90° right'] = '90° vpravo';
 $lang['Also rotate HD image'] = 'Otočiť aj HD fotku';
 $lang['Angle'] = 'Uhol';
 $lang['auto (EXIF orientation tag)'] = 'automaticky (podľa EXIF)';
+$lang['Rotate'] = 'Otočiť';
 ?>
