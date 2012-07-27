@@ -28,4 +28,5 @@ $lang['Angle'] = 'Кут';
 $lang['Images rotation in progress...'] = 'Обертання зображення в виконується...';
 $lang['Rotate images'] = 'Обертання зображення';
 $lang['auto (EXIF orientation tag)'] = 'авто (EXIF орієнтації теґа)';
+$lang['Rotate'] = 'Повернути';
 ?>
