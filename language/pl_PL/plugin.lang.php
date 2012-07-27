@@ -8,4 +8,5 @@ $lang['90° right'] = '90° w prawo';
 $lang['Also rotate HD image'] = 'Obróć również obraz wysokiej jakości HD';
 $lang['Angle'] = 'Kąt';
 $lang['auto (EXIF orientation tag)'] = 'automatycznie (wg orientacji w EXIF)';
+$lang['Rotate'] = 'Obróć';
 ?>
