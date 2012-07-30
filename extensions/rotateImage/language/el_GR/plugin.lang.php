@@ -28,4 +28,5 @@ $lang['Angle'] = 'Γωνία';
 $lang['Images rotation in progress...'] = 'Περιστροφή εικόνων σε εξέλιξη ...';
 $lang['Rotate images'] = 'Περιστροφή εικόνων';
 $lang['auto (EXIF orientation tag)'] = 'αυτόματη (προσανατολισμός ετικέτας EXIF)';
+$lang['Rotate'] = 'Περιστροφή';
 ?>
