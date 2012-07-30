@@ -1,0 +1,1 @@
+Habilita para rotacionar imagens em processamento por lote
