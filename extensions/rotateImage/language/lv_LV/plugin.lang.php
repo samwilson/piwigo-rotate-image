@@ -8,4 +8,5 @@ $lang['90° right'] = '90° pa labi';
 $lang['Also rotate HD image'] = 'Rotēt arī HD attēlu';
 $lang['Angle'] = 'Leņķis';
 $lang['auto (EXIF orientation tag)'] = 'auto(EXIF orientācijas tegs)';
+$lang['Rotate'] = 'Pagriezt';
 ?>
