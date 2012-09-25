@@ -1,0 +1,1 @@
+Gør det muligt at rotere billeder i batchbehandling.
