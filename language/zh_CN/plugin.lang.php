@@ -9,4 +9,5 @@ $lang['90° right'] = '右转90°';
 $lang['Also rotate HD image'] = '也旋转高清图像';
 $lang['Angle'] = '角度';
 $lang['auto (EXIF orientation tag)'] = '自动旋转(根据EXIF的方向标签)';
+$lang['Rotate'] = '旋转';
 ?>
