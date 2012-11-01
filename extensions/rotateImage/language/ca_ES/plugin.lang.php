@@ -23,9 +23,10 @@
 $lang['180°'] = '180º';
 $lang['90° left'] = '90º a l\'esquerra';
 $lang['90° right'] = '90º a la dreta';
-$lang['Also rotate HD image'] = 'Rotar també imatges en alta qualitat (HD)';
+$lang['Also rotate HD image'] = 'Gira també les imatges en alta qualitat (HD)';
 $lang['Angle'] = 'Angle';
-$lang['Images rotation in progress...'] = 'Rotació d\'imatges en curs...';
-$lang['Rotate images'] = 'Rotar imatges';
+$lang['Images rotation in progress...'] = 'S\'estan girant les imatges...';
+$lang['Rotate images'] = 'Girar les imatges';
 $lang['auto (EXIF orientation tag)'] = 'Automàtic (etiqueta d\'orientació Exif)';
+$lang['Rotate'] = 'Gira';
 ?>
