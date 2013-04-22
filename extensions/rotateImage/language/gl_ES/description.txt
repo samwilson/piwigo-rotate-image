@@ -1,0 +1,1 @@
+Permite virar imaxes procesándoas por lotes.
