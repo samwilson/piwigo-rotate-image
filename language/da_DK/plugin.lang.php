@@ -28,5 +28,5 @@ $lang['Angle'] = 'Vinkel';
 $lang['Images rotation in progress...'] = 'I færd med at rotere billeder ...';
 $lang['Rotate'] = 'Rotér';
 $lang['Rotate images'] = 'Rotér billeder';
-$lang['auto (EXIF orientation tag)'] = 'auto (retningstag fra EXIF)';
+$lang['auto (EXIF orientation tag)'] = 'auto (retning fra EXIF)';
 ?>
