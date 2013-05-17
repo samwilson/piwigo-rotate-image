@@ -46,7 +46,7 @@ SELECT
     }
 
     if (isset($conf['rotate_image_jpegtran']) and $conf['rotate_image_jpegtran']) {
-      $angle = ($angle + 180) % 360;
+      $angle = 360 - $angle;
       $command = 'jpegtran -copy all -rotate '.$angle.' -outfile '.$row['path'].' '.$row['path'];
       exec($command);
     }
