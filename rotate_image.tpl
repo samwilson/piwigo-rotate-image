@@ -50,14 +50,16 @@ jQuery(document).ready(function() {
     });
 
     elements = Array();
-    if (jQuery('input[name="setSelected"]').attr('checked'))
+
+    if (jQuery('input[name=setSelected]').is(':checked')) {
       elements = all_elements;
-    else
-      jQuery('input[name="selection[]"]').each(function() {
-        if (jQuery(this).attr('checked')) {
-          elements.push(jQuery(this).val());
-        }
+    }
+    else {
+      jQuery('input[name="selection[]"]').filter(':checked').each(function() {
+        elements.push(jQuery(this).val());
       });
+    }
+
     progressBar_max = elements.length;
     todo = 0;
 

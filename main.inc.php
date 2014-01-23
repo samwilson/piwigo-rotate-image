@@ -15,8 +15,7 @@ function add_image_rotate_method($arr)
 
 add_event_handler('loc_begin_element_set_global', 'rotate_image_set_template_data');
 function rotate_image_set_template_data() {
-  global $template,$lang;
-  load_language('plugin.lang', dirname(__FILE__).'/');
+  global $template;
 
   include_once(PHPWG_ROOT_PATH.'admin/include/image.class.php');
 
@@ -70,7 +69,9 @@ function rotate_image_force_refresh($root_url, $params, $src_image, $rel_url)
 
 add_event_handler('tabsheet_before_select','rotate_image_add_tab', 50, 2);
 function rotate_image_add_tab($sheets, $id)
-{  
+{
+  load_language('plugin.lang', dirname(__FILE__).'/');
+  
   if ($id == 'photo')
   {
     $sheets['rotate'] = array(
