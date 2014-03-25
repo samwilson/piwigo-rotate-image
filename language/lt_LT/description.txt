@@ -1,0 +1,1 @@
+Leidžia pasukti nuotraukas naudojant paketinį menedžerį.
