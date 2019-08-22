@@ -8,4 +8,5 @@ $lang['90° right'] = '90° clockwise';
 $lang['90° left'] = '90° counter-clockwise';
 $lang['180°'] = '180°';
 $lang['auto (EXIF orientation tag)'] = 'auto (EXIF orientation tag)';
+$lang['The photo was updated'] = 'The photo was updated';
 ?>
