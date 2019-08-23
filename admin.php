@@ -21,7 +21,7 @@
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
 
-if( !defined("PHPWG_ROOT_PATH") )
+if(!defined("PHPWG_ROOT_PATH"))
 {
   die ("Hacking attempt!");
 }
@@ -52,7 +52,7 @@ $admin_photo_base_url = get_root_url().'admin.php?page=photo-'.$_GET['image_id']
 // +-----------------------------------------------------------------------+
 
 load_language('plugin.lang', PHPWG_PLUGINS_PATH.basename(dirname(__FILE__)).'/');
-  
+
 if (isset($_POST['rotate']))
 {
   check_pwg_token();
@@ -68,7 +68,7 @@ if (isset($_POST['rotate']))
   array_push(
     $page['infos'],
     l10n('The photo was updated')
-    );
+  );
 }
 
 // +-----------------------------------------------------------------------+
@@ -87,8 +87,8 @@ $tabsheet->assign();
 $template->set_filenames(
   array(
     'plugin_admin_content' => dirname(__FILE__).'/admin.tpl'
-    )
-  );
+  )
+);
 
 // retrieving direct information about picture
 $query = '
@@ -112,8 +112,8 @@ $template->assign(
     'angle_selected' => 90,
     'library' => pwg_image::get_library(),
     'PWG_TOKEN' => get_pwg_token(),
-    )
-  );
+  )
+);
 
 // +-----------------------------------------------------------------------+
 // | sending html code                                                     |

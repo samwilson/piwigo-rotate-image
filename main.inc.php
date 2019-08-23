@@ -10,11 +10,12 @@ if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 add_event_handler('ws_add_methods', 'add_image_rotate_method');
 function add_image_rotate_method($arr)
 {
- include_once('ws_functions.inc.php');
+  include_once('ws_functions.inc.php');
 }
 
 add_event_handler('loc_begin_element_set_global', 'rotate_image_set_template_data');
-function rotate_image_set_template_data() {
+function rotate_image_set_template_data()
+{
   global $template;
 
   include_once(PHPWG_ROOT_PATH.'admin/include/image.class.php');
@@ -32,15 +33,19 @@ function rotate_image_set_template_data() {
     'library' => pwg_image::get_library()
   ));
   $template->set_filename('rotate_image', realpath(dirname(__FILE__).'/rotate_image.tpl'));
-  $template->append('element_set_global_plugins_actions', array(
-    'ID' => 'rotateImg',
-    'NAME' => l10n('Rotate images'),
-    'CONTENT' => $template->parse('rotate_image', true))
+  $template->append(
+    'element_set_global_plugins_actions',
+    array(
+      'ID' => 'rotateImg',
+      'NAME' => l10n('Rotate images'),
+      'CONTENT' => $template->parse('rotate_image', true)
+    )
   );
 }
 
 add_event_handler('element_set_global_action', 'rotate_image_element_action', 50, 2);
-function rotate_image_element_action($action, $collection) {
+function rotate_image_element_action($action, $collection)
+{
   if ($action == 'rotateImg') {
     add_event_handler('get_derivative_url', 'rotate_image_force_refresh', EVENT_HANDLER_PRIORITY_NEUTRAL, 4);
   }
@@ -77,7 +82,7 @@ function rotate_image_add_tab($sheets, $id)
     $sheets['rotate'] = array(
       'caption' => l10n('Rotate'),
       'url' => get_root_url().'admin.php?page=plugin-rotateImage-'.$_GET['image_id'],
-      );
+    );
   }
   
   return $sheets;

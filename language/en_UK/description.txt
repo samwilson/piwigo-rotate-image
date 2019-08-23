@@ -1,1 +1,1 @@
-enables to rotate images in batch processing
+Rotate images individually and via the batch manager.
