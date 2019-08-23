@@ -6,10 +6,10 @@ include_once(dirname(__FILE__).'/functions.inc.php');
 $service = &$arr[0];
 $service->addMethod('pwg.image.rotate', 'ws_image_rotate',
   array(
-  'image_id'=>array(),
-  'angle'=>array('default'=>"90"),
-  'pwg_token' => array(),
-  'rotate_hd' => array('default'=>0)
+    'image_id'=>array(),
+    'angle'=>array('default'=>"90"),
+    'pwg_token' => array(),
+    'rotate_hd' => array('default'=>0)
   ),
   'Rotates a given image'
 );
